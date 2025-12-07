@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a Record</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="row">
+<div class="col-md-6">
+<h1>Add an entry</h1>
+
+    <!--define the object we declared in the controller here. Its empty in add but should be filled in edit-->
+<form th:object="${record}" th:action="@{/addRecord}" method="post"> <!-- add or remove form items here-->
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <label for="customerNumber">Customer Number:</label>
+        <input th:field="*{customerNumber}" th:attr="readonly=${record.id != null}"
+               type="number" class="form-control" id="customerNumber" required>
+    </div>
+    <div class="form-group">
+        <label for="customerName">Customer Name:</label>
+        <input th:field="*{customerName}" type="text" class="form-control" id="customerName" required>
+    </div>
+    <div class="form-group">
+        <label  for="deposit">Customer Initial Deposit:</label>
+        <input th:field="*{customerDeposit}" type="number" class="form-control" id="deposit"  required>
+    </div>
+    <div class="form-group">
+        <label for="years">Number of years:</label>
+        <input th:field="*{numberOfYears}" type="number" class="form-control" id="years" required>
+    </div>
+    <!--use below for any options in a form-->
+    <div class="form-group">
+        <label for="savingsType">Savings Type:</label>
+        <select th:field="*{savingsType}" class="form-control" id="savingsType" name="savingsType" required>
+            <option value="" disabled selected>Select a savings type</option>
+            <option value="Savings-Deluxe">Savings-Deluxe</option>
+            <option value="Savings-Regular">Savings-Regular</option>
+        </select>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <!-- add form action to the form not the button.-->
+
+</form>
+</div>
+</div>
+</body>
+</html>
