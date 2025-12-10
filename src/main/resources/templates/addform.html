@@ -29,7 +29,8 @@
     </div>
     <div class="form-group">
         <label for="years">Number of years:</label>
-        <input th:field="*{numberOfYears}" type="number" class="form-control" id="years" required>
+        <input th:field="*{numberOfYears}" type="number" class="form-control" id="years" min="1" max="99" required>
+        <!--I have input validation here. Take it out if not needed-->
     </div>
     <!--use below for any options in a form-->
     <div class="form-group">

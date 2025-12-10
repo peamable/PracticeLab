@@ -15,6 +15,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Create empty GitHub repo
+git init
+git add .
+git commit
+git remote add origin <repo-url>
+git push -u origin main
+GITHUB repository link  https://github.com/peamable/PracticeLab.git
+ */
 @Controller
 public class RecordController {
     private final RecordRepository recordRepository;
@@ -76,6 +85,8 @@ public class RecordController {
     @GetMapping("/openProjection/{id}")
     public String openProjection(@PathVariable Long id, Model model) {
        InvestmentRecord record= recordRepository.findById(id).orElseThrow(() ->new IllegalArgumentException("Record not found"));
+       model.addAttribute("customerNumber", record.getCustomerNumber());
+       model.addAttribute("customerName", record.getCustomerName());
        int numOfYears = record.getNumberOfYears();
        String savingsType = record.getSavingsType();
        double intRate;

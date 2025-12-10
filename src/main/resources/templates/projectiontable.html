@@ -8,8 +8,10 @@
 </head>
 <body>
 
-<h1>Projected table for customer number {customerNumber}</h1>
-<h1>Name:</h1>
+
+<h1 id="table-header">Projected table for customer number: <span th:text="${customerNumber}"></span></h1>
+<h1 id="table-header2">Name: <span th:text = "${customerName}"></span></h1>
+
 
 <table class="table table-striped">
     <thead>
